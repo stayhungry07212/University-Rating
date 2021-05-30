@@ -1,0 +1,30 @@
+<h1 mat-dialog-title>{{ 'login_dialog.title' | translate }}</h1>
+<div mat-dialog-content>
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="{{ 'login_dialog.email' | translate }}" [formControl]="emailFormControl"
+        [errorStateMatcher]="matcher" type="email">
+      <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+        {{ 'login_dialog.error_invalid_email' | translate }}
+      </mat-error>
+      <mat-error *ngIf="emailFormControl.hasError('required')">
+        {{ 'login_dialog.error_required_email' | translate }}
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="{{ 'login_dialog.password' | translate }}" [formControl]="passwordFormControl"
+        type="password">
+    </mat-form-field>
+  </form>
+</div>
+<div *ngIf="error" class="custom-error">
+  {{ error }}
+</div>
+<div mat-dialog-actions>
+  <button mat-stroked-button (click)="cancelLogin()">{{ 'login_dialog.cancel' | translate }}</button>
+  <app-wave-button
+  text="{{ 'login_dialog.login' | translate }}"
+  [ngClass]="{'disabled-pointer-event': emailFormControl.status === 'INVALID' || passwordFormControl.status === 'INVALID'}"
+  (click)="signInWithEmail()"
+></app-wave-button>
+</div>

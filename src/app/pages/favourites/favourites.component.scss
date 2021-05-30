@@ -1,0 +1,16 @@
+app-favourites {
+  .favourites {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    margin: 10px 60px;
+  }
+
+  .custom-favourites-header-text {
+    padding: 30px;
+    display: flex;
+    font-weight: bold;
+    justify-content: center;
+    font-size: 1.3rem;
+  }
+}

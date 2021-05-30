@@ -1,0 +1,7 @@
+@import "../../variables.scss";
+
+app-editable-chips-list {
+    .mat-standard-chip {
+        background-color: $lightgray !important;
+    }
+}

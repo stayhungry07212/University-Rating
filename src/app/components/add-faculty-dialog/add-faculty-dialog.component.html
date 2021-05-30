@@ -1,0 +1,14 @@
+<div mat-dialog-content>
+  <form fxLayout="column" class="example-form" [formGroup]="form">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="name" formControlName="name" type="text">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="description" formControlName="description" type="text">
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-stroked-button (click)="cancel()">Anuleaza</button>
+  <button mat-stroked-button (click)="save()" [disabled]="form.status === 'INVALID'">Salveaza</button>
+</div>

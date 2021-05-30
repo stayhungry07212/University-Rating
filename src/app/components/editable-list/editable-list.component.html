@@ -1,0 +1,19 @@
+<ul>
+    <li *ngFor="let item of list">
+        <div *ngIf="editable" class="custom-list">
+            - {{ item }}
+            <svg-icon src="assets/icons/delete.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':'red' }"
+                (click)="remove(item)"></svg-icon>
+        </div>
+        <div *ngIf="!editable">
+            - {{ item }}
+        </div>
+    </li>
+    <li *ngIf="editable">
+        <mat-form-field>
+            <input matInput type="text" [(ngModel)]="text">
+        </mat-form-field>
+        <svg-icon src="assets/icons/done.svg" [svgStyle]="{ 'width.px':20, 'height.px':20, 'fill':'green' }"
+            (click)="add()"></svg-icon>
+    </li>
+</ul>

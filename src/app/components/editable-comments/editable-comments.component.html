@@ -1,0 +1,52 @@
+<mat-card class="custom-card-comment" *ngIf="review.status === 'approved'">
+  <mat-card-content class="custom-card-comment-content">
+    <img src="{{ userData?.image }}" class="custom-avatar-image" *ngIf="userData?.image">
+    <img src="assets/account.png" class="custom-avatar-image" *ngIf="!userData?.image">
+    <div *ngIf="!editable" class="custom-card-content">
+      <div class="comment-header">
+        <div class="name">
+          {{ userData?.name }} {{ userData?.surname }}
+          <div class="date">
+            &nbsp;- {{ review.date }}
+          </div>
+        </div>
+        <div>
+          <!-- <mat-icon *ngIf="editable" (click)="editComment()" class="cursor-pointer">create</mat-icon> -->
+        </div>
+      </div>
+      <app-editable-star-rating *ngIf="review.stars" [stars]="review.stars" [editable]="editable">
+      </app-editable-star-rating>
+      <div class="comment">
+        {{ review.comment }}
+      </div>
+    </div>
+    <div *ngIf="editable" class="editable-content">
+      <div class="name">
+        {{ user?.name }} {{ user?.surname }}
+      </div>
+      <app-editable-star-rating [stars]="review.stars" [editable]="editable"
+        (setStarsEmitter)="setStarsForEditableComment($event)"></app-editable-star-rating>
+      <div class="comment">
+        <textarea matInput  class="custom-textarea" [(ngModel)]="commentText"></textarea>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-card-actions *ngIf="editable">
+    <app-wave-button
+      text="Adauga comentariu"
+      (click)="addComment()"
+      [ngClass]="{'disabled-pointer-event': !commentText}"
+    ></app-wave-button>
+  </mat-card-actions>
+</mat-card>
+<mat-card class="custom-card-comment" *ngIf="review.status === 'pending' && user.id === review.userId">
+  <mat-card-content>
+    Comentariul dvs. pare a fi negativ. Il vom examina si este posibil ca un admin al aplicatiei sa va contacteze daca
+     a fost necesar pentru a confirma ca comentariul dvs. nu este un spam. Multumesc pentru intelegere.
+  </mat-card-content>
+</mat-card>
+<mat-card class="custom-card-comment" *ngIf="review.status === 'pending' && user.id !== review.userId">
+  <mat-card-content>
+    Acest comentariu pare a fi negativ si este examinat de unul dintre administratorii nostri pentru a fi sigur ca nu este un spam. Multumesc pentru intelegere.
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,67 @@
+<h1 mat-dialog-title>{{ "signup_dialog.title" | translate }}</h1>
+<div mat-dialog-content>
+  <form fxLayout="column" [formGroup]="signUpForm">
+    <div class="adminstration-info">
+      {{ "signup_dialog.university_administration" | translate }}
+    </div>
+    <mat-form-field class="example-full-width">
+      <input
+        matInput
+        placeholder="{{ 'signup_dialog.email' | translate }}"
+        formControlName="email"
+        [errorStateMatcher]="matcher"
+        type="email"
+      />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input
+        matInput
+        placeholder="{{ 'signup_dialog.password' | translate }}"
+        formControlName="password"
+        type="password"
+      />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input
+        matInput
+        placeholder="{{ 'signup_dialog.password' | translate }}"
+        formControlName="passwordRepeat"
+        type="password"
+      />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input
+        matInput
+        placeholder="{{ 'signup_dialog.name' | translate }}"
+        formControlName="name"
+        type="text"
+      />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input
+        matInput
+        placeholder="{{ 'signup_dialog.surname' | translate }}"
+        formControlName="surname"
+        type="text"
+      />
+    </mat-form-field>
+    <div class="gdpr-checkbox">
+      <mat-checkbox formControlName="gdpr">
+        {{ "signup_dialog.gdpr" | translate }}
+      </mat-checkbox>
+    </div>
+  </form>
+</div>
+<div *ngIf="error" class="custom-error">
+  {{ error }}
+</div>
+<div mat-dialog-actions>
+  <button mat-stroked-button (click)="cancelSignUp()">
+    {{ "signup_dialog.cancel" | translate }}
+  </button>
+  <app-wave-button
+    text="{{ 'signup_dialog.signup' | translate }}"
+    [ngClass]="{ 'disabled-pointer-event': signUpForm.status === 'INVALID' }"
+    (click)="signUpWithEmail()"
+  ></app-wave-button>
+</div>

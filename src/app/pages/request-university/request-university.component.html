@@ -1,0 +1,33 @@
+  <form fxLayout="column" [formGroup]="form">
+    <mat-form-field>
+      <input matInput required placeholder="Name" formControlName="nameFormControl" type="text">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput required placeholder="Description" formControlName="descriptionUniversityFormControl"
+        type="text">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Institution type</mat-label>
+      <mat-select formControlName="typeFormControl">
+        <mat-option value="privat">
+          Privat
+        </mat-option>
+        <mat-option value="stat">
+          Stat
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput required placeholder="Website URL" formControlName="websiteFormControl" type="text">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput required placeholder="Phone number" formControlName="phoneFormControl" type="text">
+    </mat-form-field>
+    <div class="button-custom-on-center">
+      <app-wave-button
+      text="Trimite cerere"
+      (click)="send()"
+      [ngClass]="{'disabled-pointer-event': form.status === 'INVALID'}"
+    ></app-wave-button>
+    </div>
+  </form>

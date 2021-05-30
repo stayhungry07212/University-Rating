@@ -1,0 +1,190 @@
+<mat-card *ngIf="type === 'Faculty'">
+  <mat-card-content>
+    <div class="logo-image">
+      <img
+        mat-card-image
+        src="{{ data?.logoFaculty }}"
+        *ngIf="data?.logoFaculty"
+      />
+      <img
+        mat-card-image
+        src="assets/university.png"
+        *ngIf="!data?.logoFaculty"
+      />
+    </div>
+    <p class="dark-blue-bold-text">
+      {{ data?.nameFaculty | uppercase }}
+    </p>
+    <p class="grey-text" *ngIf="data?.locationFaculty">
+      {{ data?.locationFaculty }}
+    </p>
+    <div class="bottom-items">
+      <app-editable-star-rating
+        *ngIf="data?.facultyId"
+        [id]="data?.facultyId"
+        [editable]="false"
+        type="faculty"
+        showNumberOfRatings="true"
+      >
+      </app-editable-star-rating>
+      <app-wave-button
+        text="{{ 'buttons.more_details' | translate | uppercase }}"
+        (click)="goTo()"
+      ></app-wave-button>
+    </div>
+    <svg-icon src="assets/icons/heart.svg" class="custom-top-right-icon"
+    [svgStyle]="{ 'width.px':30, 'height.px':30, 'fill':'#dc3545' }" *ngIf="user && findifFavourite(data?.facultyId)"
+    (click)="removeFromFavourite(data?.facultyId)"></svg-icon>
+<svg-icon src="assets/icons/heart_border.svg" class="custom-top-right-icon"
+    [svgStyle]="{ 'width.px':30, 'height.px':30, 'fill':'#dc3545' }" *ngIf="user && !findifFavourite(data?.facultyId)"
+    (click)="addFavourite(data?.facultyId)"></svg-icon>
+  </mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="type === 'Bachelor'">
+  <mat-card-content>
+    <div class="logo-image">
+      <img
+        mat-card-image
+        src="{{ data?.logoFaculty }}"
+        *ngIf="data?.logoFaculty"
+      />
+      <img
+        mat-card-image
+        src="assets/university.png"
+        *ngIf="!data?.logoFaculty"
+      />
+    </div>
+    <p class="dark-blue-bold-text">
+      {{ data?.name | uppercase }}
+    </p>
+    <p class="grey-text" *ngIf="data?.locationFaculty">
+      {{ data?.locationFaculty }}
+    </p>
+    <div class="bottom-items">
+      <app-wave-button
+        text="{{ 'buttons.more_details' | translate | uppercase }}"
+        (click)="goTo()"
+      ></app-wave-button>
+    </div>
+    <svg-icon src="assets/icons/heart.svg" class="custom-top-right-icon"
+                [svgStyle]="{ 'width.px':30, 'height.px':30, 'fill':'#dc3545' }" *ngIf="user && findifFavourite(data?.id)"
+                (click)="removeFromFavourite(data?.id)"></svg-icon>
+            <svg-icon src="assets/icons/heart_border.svg" class="custom-top-right-icon"
+                [svgStyle]="{ 'width.px':30, 'height.px':30, 'fill':'#dc3545' }" *ngIf="user && !findifFavourite(data?.id)"
+                (click)="addFavourite(data?.id)"></svg-icon>
+  </mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="type === 'Master'">
+  <mat-card-content>
+    <div class="logo-image">
+      <img
+        mat-card-image
+        src="{{ data?.logoFaculty }}"
+        *ngIf="data?.logoFaculty"
+      />
+      <img
+        mat-card-image
+        src="assets/university.png"
+        *ngIf="!data?.logoFaculty"
+      />
+    </div>
+    <p class="dark-blue-bold-text">
+      {{ data?.name | uppercase }}
+    </p>
+    <p class="grey-text" *ngIf="data?.locationFaculty">
+      {{ data?.locationFaculty }}
+    </p>
+    <div class="bottom-items">
+      <app-wave-button
+        text="{{ 'buttons.more_details' | translate | uppercase }}"
+        (click)="goTo()"
+      ></app-wave-button>
+    </div>
+    <svg-icon src="assets/icons/heart.svg" class="custom-top-right-icon"
+    [svgStyle]="{ 'width.px':30, 'height.px':30, 'fill':'#dc3545' }" *ngIf="user && findifFavourite(data?.id)"
+    (click)="removeFromFavourite(data?.id)"></svg-icon>
+<svg-icon src="assets/icons/heart_border.svg" class="custom-top-right-icon"
+    [svgStyle]="{ 'width.px':30, 'height.px':30, 'fill':'#dc3545' }" *ngIf="user && !findifFavourite(data?.id)"
+    (click)="addFavourite(data?.id)"></svg-icon>
+  </mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="type === 'Doctoral'">
+  <mat-card-content>
+    <div class="logo-image">
+      <img
+        mat-card-image
+        src="{{ data?.logoFaculty }}"
+        *ngIf="data?.logoFaculty"
+      />
+      <img
+        mat-card-image
+        src="assets/university.png"
+        *ngIf="!data?.logoFaculty"
+      />
+    </div>
+    <p class="dark-blue-bold-text">
+      {{ data?.name | uppercase }}
+    </p>
+    <p class="grey-text" *ngIf="data?.locationFaculty">
+      {{ data?.locationFaculty }}
+    </p>
+    <div class="bottom-items">
+      <app-wave-button
+        text="{{ 'buttons.more_details' | translate | uppercase }}"
+        (click)="goTo()"
+      ></app-wave-button>
+    </div>
+    <svg-icon src="assets/icons/heart.svg" class="custom-top-right-icon"
+    [svgStyle]="{ 'width.px':30, 'height.px':30, 'fill':'#dc3545' }" *ngIf="user && findifFavourite(data?.id)"
+    (click)="removeFromFavourite(data?.id)"></svg-icon>
+<svg-icon src="assets/icons/heart_border.svg" class="custom-top-right-icon"
+    [svgStyle]="{ 'width.px':30, 'height.px':30, 'fill':'#dc3545' }" *ngIf="user && !findifFavourite(data?.id)"
+    (click)="addFavourite(data?.id)"></svg-icon>
+  </mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="type === 'University'">
+  <mat-card-content>
+    <div class="logo-image">
+      <img
+        mat-card-image
+        src="{{ data?.logoUniversity }}"
+        *ngIf="data?.logoUniversity"
+      />
+      <img
+        mat-card-image
+        src="assets/university.png"
+        *ngIf="!data?.logoUniversity"
+      />
+    </div>
+    <p class="dark-blue-bold-text">
+      {{ data?.nameUniversity | uppercase }}
+    </p>
+    <p class="grey-text" *ngIf="data?.locality">
+      {{ data?.locality }}
+    </p>
+    <div class="bottom-items">
+      <app-editable-star-rating
+        *ngIf="data?.universityId"
+        [id]="data?.universityId"
+        [editable]="false"
+        type="university"
+        showNumberOfRatings="true"
+      >
+      </app-editable-star-rating>
+      <app-wave-button
+        text="{{ 'buttons.more_details' | translate | uppercase }}"
+        (click)="goTo()"
+      ></app-wave-button>
+    </div>
+    <svg-icon src="assets/icons/heart.svg" class="custom-top-right-icon"
+    [svgStyle]="{ 'width.px':30, 'height.px':30, 'fill':'#dc3545' }" *ngIf="user && findifFavourite(data?.universityId)"
+    (click)="removeFromFavourite(data?.universityId)"></svg-icon>
+<svg-icon src="assets/icons/heart_border.svg" class="custom-top-right-icon"
+    [svgStyle]="{ 'width.px':30, 'height.px':30, 'fill':'#dc3545' }" *ngIf="user && !findifFavourite(data?.universityId)"
+    (click)="addFavourite(data?.universityId)"></svg-icon>
+  </mat-card-content>
+</mat-card>

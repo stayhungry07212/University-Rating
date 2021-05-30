@@ -1,0 +1,177 @@
+<mat-tab-group mat-align-tabs="center">
+  <!-- approved -->
+  <mat-tab label="Approved">
+    <div *ngFor="let item of getData('approved')">
+      <mat-card fxLayout="column" *ngIf="item.requestId">
+        <mat-card-content>
+          <div class="custom-detail-field" *ngIf="item.status">
+            <div class="custom-detail-field-title">
+              Status
+            </div>
+            {{ item.status }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.userId">
+            <div class="custom-detail-field-title">
+              Id utilizator
+            </div>
+            {{ item.userId }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.address">
+            <div class="custom-detail-field-title">
+              Adresa
+            </div>
+            {{ item.address }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.descriptionUniversity">
+            <div class="custom-detail-field-title">
+              Descriere
+            </div>
+            {{ item.descriptionUniversity }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.nameUniversity">
+            <div class="custom-detail-field-title">
+              Nume
+            </div>
+            {{ item.nameUniversity }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.phone">
+            <div class="custom-detail-field-title">
+              Telefon
+            </div>
+            {{ item.phone }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.typeUniversity">
+            <div class="custom-detail-field-title">
+              Tip
+            </div>
+            {{ item.typeUniversity }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.websiteUniversity">
+            <div class="custom-detail-field-title">
+              Website
+            </div>
+            {{ item.websiteUniversity }}
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </mat-tab>
+  <!-- pending -->
+  <mat-tab label="Pending">
+    <div *ngFor="let item of getData('pending')">
+      <mat-card fxLayout="column" *ngIf="item.requestId">
+        <mat-card-content>
+          <div class="custom-detail-field" *ngIf="item.status">
+            <div class="custom-detail-field-title">
+              Status
+            </div>
+            {{ item.status }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.userId">
+            <div class="custom-detail-field-title">
+              Id user
+            </div>
+            {{ item.userId }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.address">
+            <div class="custom-detail-field-title">
+              Adresa
+            </div>
+            {{ item.address }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.descriptionUniversity">
+            <div class="custom-detail-field-title">
+              Descriere
+            </div>
+            {{ item.descriptionUniversity }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.nameUniversity">
+            <div class="custom-detail-field-title">
+              Denumire
+            </div>
+            {{ item.nameUniversity }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.phone">
+            <div class="custom-detail-field-title">
+              Telefon
+            </div>
+            {{ item.phone }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.typeUniversity">
+            <div class="custom-detail-field-title">
+              Tip
+            </div>
+            {{ item.typeUniversity }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.websiteUniversity">
+            <div class="custom-detail-field-title">
+              websiteUniversity
+            </div>
+            {{ item.websiteUniversity }}
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-stroked-button (click)="approve(item)">Aproba</button>
+          <button mat-stroked-button (click)="decline(item)">Respinge</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </mat-tab>
+  <!-- declined -->
+  <mat-tab label="Declined">
+    <div *ngFor="let item of getData('declined')">
+      <mat-card fxLayout="column" *ngIf="item.requestId">
+        <mat-card-content>
+          <div class="custom-detail-field" *ngIf="item.status">
+            <div class="custom-detail-field-title">
+              Status
+            </div>
+            {{ item.status }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.userId">
+            <div class="custom-detail-field-title">
+              Id utilizator
+            </div>
+            {{ item.userId }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.address">
+            <div class="custom-detail-field-title">
+              Adresa
+            </div>
+            {{ item.address }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.descriptionUniversity">
+            <div class="custom-detail-field-title">
+              Descriere
+            </div>
+            {{ item.descriptionUniversity }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.nameUniversity">
+            <div class="custom-detail-field-title">
+              Denumire
+            </div>
+            {{ item.nameUniversity }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.phone">
+            <div class="custom-detail-field-title">
+              Telefon
+            </div>
+            {{ item.phone }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.typeUniversity">
+            <div class="custom-detail-field-title">
+              Tip
+            </div>
+            {{ item.typeUniversity }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.websiteUniversity">
+            <div class="custom-detail-field-title">
+              Website
+            </div>
+            {{ item.websiteUniversity }}
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </mat-tab>
+</mat-tab-group>

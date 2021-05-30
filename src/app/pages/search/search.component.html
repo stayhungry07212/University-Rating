@@ -1,0 +1,129 @@
+<div class="container">
+  <div fxLayout="column">
+    <div class="custom-flex-filters">
+      <app-wave-button
+      *ngIf="!showFilters"
+      text="Arata filtre"
+      (click)="setShowFilters(true)"
+    ></app-wave-button>
+    </div>
+    <div class="custom-flex-filters" *ngIf="showFilters">
+      <!-- study level -->
+      <mat-form-field>
+        <mat-label>{{ "filters.study_level" | translate }}</mat-label>
+        <mat-select [(ngModel)]="studyLevel">
+          <mat-option *ngFor="let category of categories" [value]="category">
+            {{ category }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <!-- keywords search -->
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="{{ 'filters.keywords.name' | translate }}"
+          [formControl]="keywordsSearch"
+        />
+      </mat-form-field>
+      <!-- description search -->
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="{{ 'filters.keywords.description' | translate }}"
+          [formControl]="descriptionSearch"
+        />
+      </mat-form-field>
+      <!-- locatin search -->
+      <mat-form-field>
+        <mat-label>{{
+          "filters.keywords.location.label" | translate
+        }}</mat-label>
+        <mat-select [formControl]="locations">
+          <mat-select-trigger>
+            {{
+              locations.value
+                ? locations.value === "all_locations"
+                  ? ("filters.keywords.location.all_locations" | translate)
+                  : locations.value
+                : ""
+            }}
+          </mat-select-trigger>
+          <mat-option value="all_locations">{{
+            "filters.keywords.location.all_locations" | translate
+          }}</mat-option>
+          <mat-option
+            *ngFor="let location of locationsList"
+            [value]="location"
+            >{{ location }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+      <!-- facilities search -->
+      <mat-form-field *ngIf="studyLevel === 'University'">
+        <mat-label>{{
+          "filters.keywords.facilities.label" | translate
+        }}</mat-label>
+        <mat-select [formControl]="facilities" multiple>
+          <mat-select-trigger>
+            {{ facilities.value ? (facilities.value[0] | translate) : "" }}
+            <span
+              *ngIf="facilities.value?.length > 1"
+              class="example-additional-selection"
+            >
+              (+{{ facilities.value.length - 1 }}
+              {{ facilities.value?.length === 2 ? "other" : "others" }})
+            </span>
+          </mat-select-trigger>
+          <mat-option
+            *ngFor="let facility of facilitiesList"
+            [value]="facility"
+          >
+            {{ facility | instantFacilityTranslate }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+      <!-- rating -->
+      <mat-form-field>
+        <mat-label>{{ "filters.sort_rating" | translate }}</mat-label>
+        <mat-select [(ngModel)]="ratingType">
+          <mat-option *ngFor="let sort of sortTypes" [value]="sort">
+            {{ sort }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <!-- type -->
+      <mat-form-field *ngIf="studyLevel === 'University'">
+        <mat-label>{{
+          "filters.institution_type.label" | translate
+        }}</mat-label>
+        <mat-select multiple [(ngModel)]="institutionTypeSelection">
+          <mat-option value="stat">{{
+            "filters.institution_type.state" | translate
+          }}</mat-option>
+          <mat-option value="privat">{{
+            "filters.institution_type.private" | translate
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="custom-flex-filters">
+    <app-wave-button
+    *ngIf="showFilters"
+    text="Ascunde filtre"
+    (click)="setShowFilters(false)"
+  ></app-wave-button>
+    </div>
+
+    <div #results id="resultsId">
+      <div class="grey-text" style="padding: 10px 70px;">
+        {{ getData().length }} {{ "filters.result_counter" | translate }}
+      </div>
+      <div class="results-cards">
+        <div *ngFor="let result of getData()">
+          <app-presentation-card [type]="studyLevel" [data]="result">
+          </app-presentation-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

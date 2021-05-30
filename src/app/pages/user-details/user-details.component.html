@@ -1,0 +1,128 @@
+<div class="request-status" *ngIf="requestStatus">
+  {{ requestStatus }}
+</div>
+<div class="request-status-declined" *ngIf="requestActive && requestStatus">
+  <mat-card-subtitle *ngIf="requestStatus === 'declined'">
+    {{ requestMessage }}
+  </mat-card-subtitle>
+  <div *ngIf="requestStatus === 'declined'" class="declined-request">
+    <div class="button-custom">
+      <app-wave-button
+      text="Trimite o noua cerere"
+      (click)="goToRequestPage('new')"
+    ></app-wave-button>
+    </div>
+    <button mat-stroked-button (click)="goToRequestPage('draft')" class="modify-button">
+      Modifica si retrimite ultima cerere
+    </button>
+  </div>
+  <div *ngIf="requestStatus === 'approved'">
+    <button mat-stroked-button (click)="goToUniversityPage()" class="view-button">
+      Vizioneaza si editeaza universitatea
+    </button>
+  </div>
+</div>
+<div class="custom-div" *ngIf="user">
+  <div class="custom-header-text">
+    Detalii profil
+  </div>
+  <mat-card-content fxLayout="column">
+    <mat-form-field class="example-full-width">
+      <input
+        matInput
+        placeholder="{{ 'signup_dialog.name' | translate }}"
+        [(ngModel)]="user.name"
+        type="text"
+        [disabled]="!canEdit"
+      />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input
+        matInput
+        placeholder="{{ 'signup_dialog.surname' | translate }}"
+        [(ngModel)]="user.surname"
+        type="text"
+        [disabled]="!canEdit"
+      />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input
+        matInput
+        placeholder="{{ 'signup_dialog.birthday' | translate }}"
+        [(ngModel)]="user.birthday"
+        type="date"
+        [disabled]="!canEdit"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>{{ "signup_dialog.sex" | translate }}</mat-label>
+      <select matNativeControl [(ngModel)]="user.sex" [disabled]="!canEdit">
+        <option value="M">{{ "signup_dialog.male" | translate }}</option>
+        <option value="F">{{ "signup_dialog.female" | translate }}</option>
+      </select>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" *ngIf="!canEdit && user && user.locality">
+      <input
+        matInput
+        placeholder="Location"
+        [(ngModel)]="user.locality"
+        type="text"
+        disabled="true"
+      />
+    </mat-form-field>
+    <AutocompleteAddressComponent
+      (setAddress)="getAddress($event)"
+      adressType="geocode"
+      *ngIf="canEdit"
+    ></AutocompleteAddressComponent>
+    <mat-form-field>
+      <mat-label>{{ "signup_dialog.school_level" | translate }}</mat-label>
+      <select
+        matNativeControl
+        [(ngModel)]="user.schoolLevel"
+        [disabled]="!canEdit"
+      >
+        <option *ngFor="let level of schoolLevelValues" [value]="level">
+          {{ level | instantSchoolLevelTranslate }}
+        </option>
+      </select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>{{ "signup_dialog.class_level" | translate }}</mat-label>
+      <select
+        matNativeControl
+        [(ngModel)]="user.classLevel"
+        [disabled]="!canEdit"
+      >
+        <option
+          *ngFor="let level of classLevelValues(user.schoolLevel)"
+          [value]="level"
+          >{{ level }}
+        </option>
+      </select>
+    </mat-form-field>
+
+    <div class="button-custom-on-center">
+      <app-wave-button
+        text="Editeaza detaliile"
+        (click)="canEdit = !canEdit"
+        *ngIf="!canEdit"
+      ></app-wave-button>
+      <app-wave-button
+        text="Salveaza"
+        (click)="saveNewDetails()"
+        *ngIf="canEdit"
+      ></app-wave-button>
+    </div>
+    <div class="button-custom-on-center">
+      <button
+        style="margin-top: 10px;"
+        mat-stroked-button
+        (click)="goToRequestPage('new')"
+        *ngIf="!requestActive"
+      >
+        Activeaza cont universitar
+    </button>
+    </div>
+  </mat-card-content>
+</div>

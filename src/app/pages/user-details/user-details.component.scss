@@ -1,0 +1,65 @@
+@import "../../variables.scss";
+
+app-user-details {
+  .custom-div {
+    margin-right: 60px;
+    margin-left: 60px;
+  }
+
+  .custom-header-text {
+    padding: 30px;
+    display: flex;
+    font-weight: bold;
+    justify-content: center;
+    font-size: 1.1rem;
+  }
+
+  .custom-favourites-header-text {
+    padding: 30px;
+    display: flex;
+    font-weight: bold;
+    justify-content: center;
+    font-size: 1.3rem;
+  }
+
+  .button-custom {
+    display: flex;
+    justify-content: center;
+    padding: 5px 0px;
+    flex-flow: row;
+  }
+
+  .button-custom-on-center {
+    margin-bottom: 10px;
+  }
+
+  .request-status {
+    padding: 10px 60px;
+    color: #3d639f;
+    text-transform: uppercase;
+    font-weight: 500;
+    background-color: #17005b12;
+  }
+
+  .request-status-declined {
+    padding: 10px 60px;
+    background-color: #17005b12;
+    text-transform: uppercase;
+
+    .declined-request {
+      padding-top: 10px;
+      display: flex;
+      align-items: center;
+
+      .modify-button {
+        background-color: white;
+        margin-left: 10px;
+        height: 38px;
+      }
+    }
+  }
+
+  .view-button {
+    background-color: white;
+  }
+}

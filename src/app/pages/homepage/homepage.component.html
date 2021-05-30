@@ -1,0 +1,56 @@
+<div class="banner-slider custom-gradient wave-one">
+  <div fxLayout="row" fxLayoutAlign="space-around center" class="center-items">
+    <div fxLayout="column">
+      <div class="white-bold-text large-font">
+        {{ "banner.first_text1" | translate | uppercase }}
+      </div>
+      <div class="white-bold-text large-font">
+        {{ "banner.first_text2" | translate | uppercase }}
+      </div>
+      <div class="white-text">
+        {{ "banner.second_text" | translate | uppercase }}
+      </div>
+      <button
+        mat-stroked-button
+        class="white-button-without-hover"
+        (click)="goToSearch()"
+      >
+        {{ "buttons.search" | translate | uppercase }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="cards">
+  <mat-card class="gradient-text-with-hover custom-card">
+    <mat-icon class="custom-icon">
+      search
+    </mat-icon>
+    <div>
+      cautati cea mai buna optiune prin sute de optiuni actualizate
+    </div>
+  </mat-card>
+  <mat-card class="gradient-text-with-hover custom-card">
+    <mat-icon class="custom-icon">
+      grade
+    </mat-icon>
+    <div>
+      noteaza si adauga un comentariu la institutii pentru ca altii sa vada daca se potriveste pentru ei
+    </div>
+  </mat-card>
+</div>
+<!-- <div class="presentation-video-content">
+  presentation video
+</div> -->
+<div class="single-card">
+  <mat-card class="gradient-text-with-hover custom-card">
+    <mat-icon class="custom-icon">
+      add
+    </mat-icon>
+    <div>
+      creati-va un cont si activati-l pentru a revendica o universitate ai adaugati informatii verificate despre aceasta
+    </div>
+  </mat-card>
+</div>
+
+<app-footer></app-footer>

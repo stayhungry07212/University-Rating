@@ -1,0 +1,12 @@
+<mat-card>
+    <mat-card-content>
+        <mat-form-field class="example-full-width">
+            <mat-label>Scrieti un comentariu</mat-label>
+            <textarea matInput [(ngModel)]="message"></textarea>
+        </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-stroked-button (click)="cancel()">Anuleaza</button>
+        <button mat-stroked-button (click)="review()">Trimite</button>
+    </mat-card-actions>
+</mat-card>

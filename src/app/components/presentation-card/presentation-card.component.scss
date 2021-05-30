@@ -1,0 +1,58 @@
+app-presentation-card {
+    .mat-card:hover {
+        .mat-card-content {
+          .logo-image {
+            img {
+              filter: none;
+            }
+          }
+        }
+      }
+  
+      .mat-card {
+        width: 209px;
+        display: flex;
+        margin: 10px;
+        flex-flow: column;
+        align-items: center;
+  
+        .mat-card-content {
+          display: flex;
+          flex-flow: column;
+          height: 100%;
+          text-align: -webkit-center;
+          align-content: center;
+  
+          .custom-top-right-icon {
+            margin: 10px;
+          }
+          
+          .logo-image {
+            height: 160px;
+  
+            img {
+              max-width: 70%;
+              max-height: 100%;
+              filter: grayscale(100%);
+            }
+  
+            img:first-child {
+              margin-top: unset;
+            }
+          }
+  
+          .bottom-items {
+            display: flex;
+            flex-flow: column;
+            justify-content: flex-end;
+            align-self: center;
+            height: 100%;
+  
+            app-editable-star-rating {
+              align-self: center;
+              margin-bottom: 15px;
+            }
+          }
+        }
+      }
+}

@@ -1,0 +1,5 @@
+<div class="custom-footer">
+    <div *ngFor="let item of items">
+            <button mat-button (click)="onNavigate(item.value)">{{ item.text | uppercase }}</button>
+    </div>
+</div>

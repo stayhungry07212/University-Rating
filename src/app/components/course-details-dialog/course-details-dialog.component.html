@@ -1,0 +1,111 @@
+<div class="custom-detail-field" *ngIf="!editable && course?.name">
+  <div class="custom-detail-field-title">
+    {{ "course_data.name" | translate }}
+  </div>
+  {{ course?.name }}
+</div>
+<mat-form-field *ngIf="editable">
+  <input
+    matInput
+    required
+    placeholder="Course name"
+    [(ngModel)]="course.name"
+    type="text"
+  />
+</mat-form-field>
+<div class="custom-detail-field" *ngIf="!editable && course?.creditGrantedByPromotion">
+  <div class="custom-detail-field-title">
+    {{ "course_data.credit_granted" | translate }}
+  </div>
+  <div>
+    {{ course?.creditGrantedByPromotion }}
+  </div>
+</div>
+<mat-form-field *ngIf="editable">
+  <input
+    matInput
+    required
+    placeholder="Credits granted"
+    [(ngModel)]="course.creditGrantedByPromotion"
+    type="text"
+  />
+</mat-form-field>
+<div>
+  <div class="custom-detail-field" *ngIf="!editable && course?.evaluationProcedure">
+    <div class="custom-detail-field-title">
+      {{ "course_data.evaluation_procedure" | translate }}
+    </div>
+    {{ course?.evaluationProcedure }}
+  </div>
+</div>
+<mat-form-field *ngIf="editable">
+  <input
+    matInput
+    required
+    placeholder="evaluationProcedure"
+    [(ngModel)]="course.evaluationProcedure"
+    type="text"
+  />
+</mat-form-field>
+<div>
+  <div class="custom-detail-field" *ngIf="!editable && course?.hours">
+    <div class="custom-detail-field-title">
+      {{ "course_data.hours" | translate }}
+    </div>
+    {{ course?.hours }}
+  </div>
+</div>
+<mat-form-field *ngIf="editable">
+  <input
+    matInput
+    required
+    placeholder="hours"
+    [(ngModel)]="course.hours"
+    type="text"
+  />
+</mat-form-field>
+<div>
+  <div class="custom-detail-field" *ngIf="!editable && course?.semester">
+    <div class="custom-detail-field-title">
+      {{ "course_data.semester" | translate }}
+    </div>
+    {{ course?.semester }}
+  </div>
+</div>
+<mat-form-field *ngIf="editable">
+  <input
+    matInput
+    required
+    placeholder="semester"
+    [(ngModel)]="course.semester"
+    type="text"
+  />
+</mat-form-field>
+<div>
+  <div class="custom-detail-field" *ngIf="!editable && course?.courseObjectives">
+    <div class="custom-detail-field-title">
+      {{ "course_data.course_objectives" | translate }}
+    </div>
+    {{ course?.courseObjectives }}
+  </div>
+</div>
+<mat-form-field *ngIf="editable">
+  <input
+    matInput
+    required
+    placeholder="courseObjectives"
+    [(ngModel)]="course.courseObjectives"
+    type="text"
+  />
+</mat-form-field>
+<div class="actions">
+  <button *ngIf="!new && editable" mat-stroked-button (click)="removeCourse()">
+    Sterge
+  </button>
+  <button *ngIf="!new && editable" mat-stroked-button (click)="removeCourse()">
+    Editeaza
+  </button>
+  <button *ngIf="new && editable" mat-stroked-button (click)="addCourse()">
+    Adauga
+  </button>
+</div>

@@ -1,0 +1,4 @@
+<app-header [firstPage]="firstPage"></app-header>
+<div [ngClass]="{'custom-content': !firstPage}">
+    <router-outlet></router-outlet>
+</div>

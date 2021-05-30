@@ -1,0 +1,40 @@
+<div class="custom-favourites-header-text" *ngIf="user && user.favouritesUniversities.length > 0">
+    Universitati favorite
+  </div>
+  <div class="favourites" *ngIf="user && user.favouritesUniversities.length > 0">
+    <div *ngFor="let result of user.favouritesUniversities">
+      <app-presentation-card [id]="result" type="University"></app-presentation-card>
+    </div>
+  </div>
+  <div class="custom-favourites-header-text" *ngIf="user && user.favouritesFaculties.length > 0">
+    Facultati favorite
+  </div>
+  <div class="favourites" *ngIf="user && user.favouritesFaculties.length > 0">
+    <div *ngFor="let result of user.favouritesFaculties">
+      <app-presentation-card [id]="result" type="Faculty"></app-presentation-card>
+    </div>
+  </div>
+  <div class="custom-favourites-header-text" *ngIf="user && user.favouritesBachelors.length > 0">
+    Programe de licenta favorite
+  </div>
+  <div class="favourites" *ngIf="user && user.favouritesBachelors.length > 0">
+    <div *ngFor="let result of user.favouritesBachelors">
+      <app-presentation-card [id]="result" type="Bachelor"></app-presentation-card>
+    </div>
+  </div>
+  <div class="custom-favourites-header-text" *ngIf="user && user.favouritesMasters.length > 0">
+    Programe de masterat favorite
+  </div>
+  <div class="favourites" *ngIf="user && user.favouritesMasters.length > 0">
+    <div *ngFor="let result of user.favouritesMasters">
+      <app-presentation-card [id]="result" type="Master"></app-presentation-card>
+    </div>
+  </div>
+  <div class="custom-favourites-header-text" *ngIf="user && user.favouritesDoctorals.length > 0">
+    Programe de doctorat favorite
+  </div>
+  <div class="favourites" *ngIf="user && user.favouritesDoctorals.length > 0">
+    <div *ngFor="let result of user.favouritesDoctorals">
+      <app-presentation-card [id]="result" type="Doctoral"></app-presentation-card>
+    </div>
+  </div>

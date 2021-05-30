@@ -1,0 +1,15 @@
+@import "../../variables.scss";
+
+app-editable-star-rating {
+  display: flex;
+
+  .green {
+    color: $success;
+  }
+  .yellow {
+    color: $warning;
+  }
+  .red {
+    color: $danger;
+  }
+}

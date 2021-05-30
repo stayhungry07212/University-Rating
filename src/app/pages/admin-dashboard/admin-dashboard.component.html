@@ -1,0 +1,232 @@
+<mat-tab-group mat-align-tabs="center">
+  <mat-tab label="Statistics">
+    <div class="custom-statistics">
+      <app-doughnut-widget [data]="totalEducationLevel"></app-doughnut-widget>
+      <app-doughnut-widget [data]="universityTypes"></app-doughnut-widget>
+      <app-doughnut-widget [data]="usersSex"></app-doughnut-widget>
+      <app-doughnut-widget [data]="usersGDPR"></app-doughnut-widget>
+      <app-doughnut-widget [data]="courseVerificationType"></app-doughnut-widget>
+      <app-doughnut-widget [data]="requestsStatuses"></app-doughnut-widget>
+      <app-doughnut-widget [data]="facultiesPerUniversity"></app-doughnut-widget>
+      <app-doughnut-widget [data]="photosPerUniversity"></app-doughnut-widget>
+      <app-doughnut-widget [data]="bachelorsPerUniversity"></app-doughnut-widget>
+      <app-doughnut-widget [data]="mastersPerUniversity"></app-doughnut-widget>
+      <app-doughnut-widget [data]="doctoralsPerUniversity"></app-doughnut-widget>
+      <app-doughnut-widget [data]="facilitiesPerUniversity"></app-doughnut-widget>
+      <app-bar-chart [data]="userAges"></app-bar-chart>
+      <app-bar-chart [data]="facilitiesUsage"></app-bar-chart>
+      <app-bar-chart [data]="classLevels"></app-bar-chart>
+      <app-bar-chart [data]="schoolLevels"></app-bar-chart>
+      <app-bar-chart [data]="userLocations"></app-bar-chart>
+      <app-bar-chart [data]="universityLocations"></app-bar-chart>
+      <app-bar-chart [data]="bachelorYears"></app-bar-chart>
+      <app-bar-chart [data]="mastersYears"></app-bar-chart>
+      <app-bar-chart [data]="doctoralsYears"></app-bar-chart>
+    </div>
+  </mat-tab>
+  <mat-tab label="Reports">
+    <mat-tab-group mat-align-tabs="center">
+      <mat-tab label="Bachelors">
+        <table mat-table [dataSource]="bachelorsData">
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> Id </th>
+            <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+          </ng-container>
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Nume </th>
+            <td mat-cell *matCellDef="let element"> {{ element.name }} </td>
+          </ng-container>
+          <ng-container matColumnDef="courses">
+            <th mat-header-cell *matHeaderCellDef> Cursuri </th>
+            <td mat-cell *matCellDef="let element"> {{ element.courses ? element.courses?.length : 0 }} </td>
+          </ng-container>
+          <ng-container matColumnDef="years">
+            <th mat-header-cell *matHeaderCellDef> Ani </th>
+            <td mat-cell *matCellDef="let element"> {{ element.years }} </td>
+          </ng-container>
+          <ng-container matColumnDef="semesters">
+            <th mat-header-cell *matHeaderCellDef> Semestre </th>
+            <td mat-cell *matCellDef="let element"> {{ element.semesters }} </td>
+          </ng-container>
+          <ng-container matColumnDef="skills">
+            <th mat-header-cell *matHeaderCellDef> Abilitati generale </th>
+            <td mat-cell *matCellDef="let element"> {{ element.generalSkills ? element.generalSkills?.length : 0 }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="perspectives">
+            <th mat-header-cell *matHeaderCellDef> Perspective profesionale </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.professionalPerspectives ? element.professionalPerspectives?.length : 0 }} </td>
+          </ng-container>
+          <ng-container matColumnDef="facultyId">
+            <th mat-header-cell *matHeaderCellDef> Id facultate </th>
+            <td mat-cell *matCellDef="let element"> {{ element.facultyId }} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="bachelorsDisplayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: bachelorsDisplayedColumns;"></tr>
+        </table>
+      </mat-tab>
+
+      <mat-tab label="Masters">
+        <table mat-table [dataSource]="mastersData">
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> Id </th>
+            <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+          </ng-container>
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Nume </th>
+            <td mat-cell *matCellDef="let element"> {{ element.name }} </td>
+          </ng-container>
+          <ng-container matColumnDef="courses">
+            <th mat-header-cell *matHeaderCellDef> Cursuri </th>
+            <td mat-cell *matCellDef="let element"> {{ element.courses ? element.courses?.length : 0 }} </td>
+          </ng-container>
+          <ng-container matColumnDef="facultyId">
+            <th mat-header-cell *matHeaderCellDef> Id facultate </th>
+            <td mat-cell *matCellDef="let element"> {{ element.facultyId }} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="mastersDisplayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: mastersDisplayedColumns;"></tr>
+        </table>
+      </mat-tab>
+
+      <mat-tab label="Doctorals">
+        <table mat-table [dataSource]="doctoralsData">
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> Id </th>
+            <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+          </ng-container>
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Nume </th>
+            <td mat-cell *matCellDef="let element"> {{ element.name }} </td>
+          </ng-container>
+          <ng-container matColumnDef="courses">
+            <th mat-header-cell *matHeaderCellDef> Cursuri </th>
+            <td mat-cell *matCellDef="let element"> {{ element.courses ? element.courses?.length : 0 }} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="doctoralsDisplayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: doctoralsDisplayedColumns;"></tr>
+        </table>
+      </mat-tab>
+
+      <mat-tab label="Faculties">
+        <table mat-table [dataSource]="facultiesData">
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> Id </th>
+            <td mat-cell *matCellDef="let element"> {{ element.facultyId }} </td>
+          </ng-container>
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Nume </th>
+            <td mat-cell *matCellDef="let element"> {{ element.nameFaculty }} </td>
+          </ng-container>
+          <ng-container matColumnDef="bachelors">
+            <th mat-header-cell *matHeaderCellDef> Licente </th>
+            <td mat-cell *matCellDef="let element"> {{ element.bachelors ? element.bachelors?.length : 0 }} </td>
+          </ng-container>
+          <ng-container matColumnDef="masters">
+            <th mat-header-cell *matHeaderCellDef> Masterate </th>
+            <td mat-cell *matCellDef="let element"> {{ element.masters ? element.masters?.length : 0 }} </td>
+          </ng-container>
+          <ng-container matColumnDef="doctorals">
+            <th mat-header-cell *matHeaderCellDef> Doctorate </th>
+            <td mat-cell *matCellDef="let element"> {{ element.doctorals ? element.doctorals?.length : 0 }} </td>
+          </ng-container>
+          <ng-container matColumnDef="universityId">
+            <th mat-header-cell *matHeaderCellDef> Id universitate </th>
+            <td mat-cell *matCellDef="let element"> {{ element.universityId }} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="facultiesDisplayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: facultiesDisplayedColumns;"></tr>
+        </table>
+      </mat-tab>
+
+      <mat-tab label="Universities">
+        <table mat-table [dataSource]="universitiesData">
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> Id </th>
+            <td mat-cell *matCellDef="let element"> {{ element.universityId }} </td>
+          </ng-container>
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Nume </th>
+            <td mat-cell *matCellDef="let element"> {{ element.nameUniversity }} </td>
+          </ng-container>
+          <ng-container matColumnDef="facilitiesUniversity">
+            <th mat-header-cell *matHeaderCellDef> Facilitati </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.facilitiesUniversity ? element.facilitiesUniversity?.length : 0 }} </td>
+          </ng-container>
+          <ng-container matColumnDef="facultiesUniversity">
+            <th mat-header-cell *matHeaderCellDef> Facultati </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.facultiesUniversity ? element.facultiesUniversity?.length : 0 }} </td>
+          </ng-container>
+          <ng-container matColumnDef="photosUniversity">
+            <th mat-header-cell *matHeaderCellDef> Poze </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.photosUniversity ? element.photosUniversity?.length : 0 }} </td>
+          </ng-container>
+          <ng-container matColumnDef="rating">
+            <th mat-header-cell *matHeaderCellDef> Recenzii </th>
+            <td mat-cell *matCellDef="let element"> {{ element.rating }} </td>
+          </ng-container>
+          <ng-container matColumnDef="strategicProgram">
+            <th mat-header-cell *matHeaderCellDef> Programe strategice </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.strategicProgram ? element.strategicProgram?.length : 0 }} </td>
+          </ng-container>
+          <ng-container matColumnDef="typeUniversity">
+            <th mat-header-cell *matHeaderCellDef> Tip institutie </th>
+            <td mat-cell *matCellDef="let element"> {{ element.typeUniversity }} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="universitiesDisplayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: universitiesDisplayedColumns;"></tr>
+        </table>
+      </mat-tab>
+
+      <mat-tab label="Users">
+        <table mat-table [dataSource]="usersData">
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> Id </th>
+            <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+          </ng-container>
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Nume </th>
+            <td mat-cell *matCellDef="let element"> {{ element.name }} </td>
+          </ng-container>
+          <ng-container matColumnDef="surname">
+            <th mat-header-cell *matHeaderCellDef> Prenume </th>
+            <td mat-cell *matCellDef="let element"> {{ element.surname }} </td>
+          </ng-container>
+          <ng-container matColumnDef="birthday">
+            <th mat-header-cell *matHeaderCellDef> Data nasterii </th>
+            <td mat-cell *matCellDef="let element"> {{ element.birthday }} </td>
+          </ng-container>
+          <ng-container matColumnDef="sex">
+            <th mat-header-cell *matHeaderCellDef> Sex </th>
+            <td mat-cell *matCellDef="let element"> {{ element.sex }} </td>
+          </ng-container>
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let element"> {{ element.email }} </td>
+          </ng-container>
+          <ng-container matColumnDef="gdpr">
+            <th mat-header-cell *matHeaderCellDef> GDPR </th>
+            <td mat-cell *matCellDef="let element"> {{ element.gdpr }} </td>
+          </ng-container>
+          <ng-container matColumnDef="locality">
+            <th mat-header-cell *matHeaderCellDef> Localitate </th>
+            <td mat-cell *matCellDef="let element"> {{ element.locality }} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="usersDisplayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: usersDisplayedColumns;"></tr>
+        </table>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-tab>
+</mat-tab-group>

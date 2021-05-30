@@ -1,0 +1,10 @@
+<mat-chip-list>
+    <mat-chip [disableRipple]="true" [selectable]="false"
+        *ngFor="let item of courses">
+        {{ item.name }} <mat-icon class="custom-icon" (click)="showInfoAboutCourse(item)">help_outline
+        </mat-icon>
+    </mat-chip>
+    <mat-chip [disableRipple]="true" [selectable]="false" (click)="addNewCourse()" *ngIf="editable">
+        Adauga
+    </mat-chip>
+</mat-chip-list><ul>

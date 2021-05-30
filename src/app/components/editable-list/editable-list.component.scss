@@ -1,0 +1,10 @@
+app-editable-list {
+    .custom-list {
+        display: flex !important;
+        padding-bottom: 5px;
+    }
+    svg-icon {
+        cursor: pointer;
+        padding-left: 5px;
+    }
+}

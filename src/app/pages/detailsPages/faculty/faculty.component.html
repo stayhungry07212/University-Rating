@@ -1,0 +1,214 @@
+<form fxLayout="column" [formGroup]="form" *ngIf="form && facultyDetails">
+  <div class="university-header" *ngIf="universityDetails">
+    <img
+      mat-card-image
+      class="header-background-image"
+      src="{{
+        universityDetails.logoUniversity
+          ? universityDetails.logoUniversity
+          : 'assets/university.png'
+      }}"
+    />
+    <div class="visit-university-button">
+      <button
+        mat-stroked-button
+        (click)="goToUniversity(facultyDetails.universityId)"
+      >
+        Viziteaza pagina universitatii
+      </button>
+    </div>
+    <div class="header-content">
+      <div class="name">
+        {{ universityDetails.nameUniversity | uppercase }}
+      </div>
+      <div class="type">
+        {{ universityDetails.typeUniversity }}
+      </div>
+    </div>
+  </div>
+  <div class="header">
+    <div class="edit-button">
+      <app-wave-button
+        text="Editeaza facultate"
+        (click)="editDetails()"
+        *ngIf="userCanEditBoolean && !editEnabled"
+      ></app-wave-button>
+      <app-wave-button
+        text="Salveaza"
+        (click)="saveDetails()"
+        *ngIf="userCanEditBoolean && editEnabled"
+      ></app-wave-button>
+    </div>
+    <div class="header-content">
+      <div class="logo" *ngIf="!editEnabled">
+        <img
+          mat-card-image
+          src="{{
+            facultyDetails.logoFaculty
+              ? facultyDetails.logoFaculty
+              : 'assets/university.png'
+          }}"
+        />
+      </div>
+      <div class="logo" *ngIf="editEnabled">
+        <app-file-uploader
+          type="logoFaculty"
+          [id]="facultyDetails.facultyId"
+        ></app-file-uploader>
+      </div>
+      <div class="main-informations">
+        <div class="name" *ngIf="!editEnabled">
+          {{ facultyDetails.nameFaculty | uppercase }}
+        </div>
+        <div *ngIf="editEnabled">
+          <mat-form-field>
+            <input
+              matInput
+              required
+              placeholder="name"
+              formControlName="nameFaculty"
+              type="text"
+            />
+          </mat-form-field>
+        </div>
+        <div class="location" *ngIf="!editEnabled">
+          {{ facultyDetails.locationFaculty }}
+        </div>
+        <div *ngIf="editEnabled">
+          <AutocompleteAddressComponent
+            (setAddress)="getAddress($event)"
+            adressType="geocode"
+          >
+          </AutocompleteAddressComponent>
+        </div>
+        <app-editable-star-rating
+          *ngIf="reviewsData && !editEnabled"
+          [reviews]="reviewsData"
+          [editable]="false"
+          type="faculty"
+          showNumberOfRatings="true"
+        ></app-editable-star-rating>
+      </div>
+    </div>
+    <div class="visit-website-button">
+      <button
+        mat-stroked-button
+        (click)="goToWebsite(facultyDetails.studyGuide)"
+        *ngIf="!editEnabled"
+      >
+        Viziteada ghidul de studii
+      </button>
+      <div *ngIf="editEnabled">
+        <mat-form-field>
+          <input
+            matInput
+            required
+            placeholder="Study guide"
+            formControlName="studyGuide"
+            type="text"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div class="description" *ngIf="facultyDetails.descriptionFaculty">
+    <div *ngIf="!editEnabled">
+      {{ facultyDetails.descriptionFaculty | limitCharactersInDiv: 650 }}
+    </div>
+    <div *ngIf="editEnabled">
+      <mat-form-field>
+        <input
+          matInput
+          required
+          placeholder="description"
+          formControlName="descriptionFaculty"
+          type="text"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <mat-tab-group>
+      <mat-tab
+        label="{{ 'faculty_page.tab_labels.bachelors' | translate }}"
+        *ngIf="(bachelorsData && bachelorsData.length > 0) || editEnabled"
+      >
+        <button
+          mat-stroked-button
+          class="add-button"
+          (click)="addProgramDialog('bachelor')"
+          *ngIf="editEnabled"
+        >
+          Adauga program de licenta
+        </button>
+
+        <div *ngFor="let bachelor of bachelorsData">
+          <app-editable-expansion-panel
+          *ngIf="bachelor.id"
+          [data]="bachelor"
+          type="bachelor"
+          [editable]="editEnabled"
+        >
+        </app-editable-expansion-panel>
+        </div>
+      </mat-tab>
+
+      <mat-tab
+        label="{{ 'faculty_page.tab_labels.masters' | translate }}"
+        *ngIf="(mastersData && mastersData.length > 0) || editEnabled"
+      >
+        <button
+          mat-stroked-button
+          class="add-button"
+          (click)="addProgramDialog('master')"
+          *ngIf="editEnabled"
+        >
+          Adauga program de master
+        </button>
+        <div *ngFor="let master of mastersData">
+          <app-editable-expansion-panel
+          *ngIf="master.id"
+          [data]="master"
+          type="master"
+          [editable]="editEnabled"
+        >
+        </app-editable-expansion-panel>
+        </div>
+      </mat-tab>
+
+      <mat-tab
+        label="{{ 'faculty_page.tab_labels.doctorals' | translate }}"
+        *ngIf="(doctoralsData && doctoralsData.length > 0) || editEnabled"
+      >
+        <button
+          mat-stroked-button
+          class="add-button"
+          (click)="addProgramDialog('doctoral')"
+          *ngIf="editEnabled"
+        >
+          Adauga program de doctorat
+        </button>
+        <div *ngFor="let doctoral of doctoralsData">
+          <app-editable-expansion-panel
+          *ngIf="doctoral.id"
+          [data]="doctoral"
+          type="doctoral"
+          [editable]="editEnabled"
+        >
+        </app-editable-expansion-panel>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  <div class="reviews" *ngIf="!editEnabled && reviewsData && reviewsData.length > 0">
+    <div class="title">
+      Recenzii
+    </div>
+    <app-editable-comments
+      *ngFor="let review of reviewsData"
+      [review]="review"
+      [editable]="user.id === review.userId && !review.comment"
+    ></app-editable-comments>
+  </div>
+</form>

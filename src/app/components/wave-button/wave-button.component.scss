@@ -1,0 +1,90 @@
+app-wave-button {
+
+  cursor: pointer;
+
+  .button {
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+    position: relative;
+    padding: 10px 16px;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    color: #ffffff;
+    overflow: hidden;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    text-transform: uppercase;
+    background-color: white; /* Light */
+    background-color: #3d639f; /* Dark */
+  }
+
+  .button div[class^="wave-"] {
+    position: absolute;
+    z-index: 0;
+    height: 200px;
+    width: 200px;
+    border-radius: 27%;
+
+    opacity: 0.5;
+  }
+
+  .button div.wave-1 {
+    background-color: #2b1c74;
+    background-color: #2b1c74;
+    left: 50%;
+    bottom: -10px;
+    transform: rotate(20deg);
+  }
+
+  .button div.wave-2 {
+    background-color: #4fa7c9;
+    top: -10px;
+    transform: rotate(180deg);
+    right: 50%;
+  }
+
+  span {
+    position: relative;
+  }
+
+  .button:hover .wave-1 {
+    animation: wave-1 6s infinite linear;
+  }
+
+  .button:hover .wave-2 {
+    animation: wave-2 6s infinite linear;
+  }
+
+  @keyframes wave-1 {
+    0% {
+      transform: rotate3d(0, 0, 1, 20deg);
+    }
+
+    50% {
+      transform: rotate3d(0, 0, 1, 200deg);
+    }
+
+    100% {
+      transform: rotate3d(0, 0, 1, 380deg);
+    }
+  }
+
+  @keyframes wave-2 {
+    0% {
+      transform: rotate3d(0, 0, 1, 180deg);
+    }
+
+    50% {
+      transform: rotate3d(0, 0, 1, 0deg);
+      right: 110px;
+    }
+
+    100% {
+      transform: rotate3d(0, 0, 1, -180deg);
+    }
+  }
+}

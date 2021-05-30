@@ -1,0 +1,278 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./app/variables.scss";
+
+html,
+body {
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: $white;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.mat-button {
+  border-radius: 20px !important;
+}
+
+.mat-form-field-flex {
+  padding: 5px;
+  border: 1px solid #17005b12;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.mat-form-field-underline {
+  background-color: none;
+  display: none;
+}
+
+button {
+  max-width: fit-content;
+}
+
+.white-bold-text {
+  color: $white;
+  font-weight: bold;
+}
+
+.dark-blue-bold-text {
+  color: $gradient2;
+  font-weight: bold;
+}
+
+.white-text {
+  color: $white;
+}
+
+.mat-card {
+  border-radius: 0px !important;
+}
+
+.custom-mat-card {
+  position: relative;
+  padding: 16px;
+  max-width: 20vw;
+  align-items: center;
+  display: flex;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: none !important;
+  flex-direction: column;
+}
+
+.grey-text {
+  color: $lightgray;
+}
+
+.app-title-cursor {
+  cursor: pointer;
+}
+
+.large-font {
+  font-size: 5vw;
+}
+
+.white-text-button {
+  color: $white;
+}
+
+.general-info {
+  padding: 20px;
+}
+
+.custom-error {
+  color: $danger;
+  font-size: smaller;
+}
+
+.mat-checkbox-layout {
+  white-space: normal !important;
+}
+
+.material-icons {
+  font-size: unset;
+}
+
+.mat-icon {
+  height: auto !important;
+  width: auto !important;
+}
+.custom-icon {
+  padding: 5px;
+  color: $black;
+}
+
+.custom-text {
+  padding: 5px;
+  color: $black;
+}
+
+.white-text-button-without-hover {
+  color: $white !important;
+}
+
+.white-button-without-hover {
+  background-color: $white !important;
+  margin-left: 10px;
+  color: $black;
+}
+
+.white-button-with-hover {
+  background-color: $white;
+  color: $black;
+}
+
+.white-button-with-hover:hover {
+  color: $white;
+  border: none;
+  background-color: $gradient1;
+  background-image: -moz-linear-gradient(45deg, $gradient1 0%, $gradient2 100%);
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    color-stop(0%, $gradient1),
+    color-stop(100%, $gradient2)
+  );
+  background-image: -webkit-linear-gradient(
+    45deg,
+    $gradient1 0%,
+    $gradient2 100%
+  );
+  background-image: -o-linear-gradient(45deg, $gradient1 0%, $gradient2 100%);
+  background: -ms-linear-gradient(45deg, $gradient1 0%, $gradient2 100%);
+  background: -webkit-linear-gradient(45deg, $gradient1 0%, $gradient2 100%);
+  background: -o-linear-gradient(45deg, $gradient1 0%, $gradient2 100%);
+  background: linear-gradient(45deg, $gradient1 0%, $gradient2 100%);
+}
+
+.gradient-button-without-hover {
+  color: $white !important;
+  border: none !important;
+  background-color: $gradient1;
+  background-image: -moz-linear-gradient(45deg, $gradient1 0%, $gradient2 100%);
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    color-stop(0%, $gradient1),
+    color-stop(100%, $gradient2)
+  );
+  background-image: -webkit-linear-gradient(
+    45deg,
+    $gradient1 0%,
+    $gradient2 100%
+  );
+  background-image: -o-linear-gradient(45deg, $gradient1 0%, $gradient2 100%);
+  background: -ms-linear-gradient(45deg, $gradient1 0%, $gradient2 100%);
+  background: -webkit-linear-gradient(45deg, $gradient1 0%, $gradient2 100%);
+  background: -o-linear-gradient(45deg, $gradient1 0%, $gradient2 100%);
+  background: linear-gradient(45deg, $gradient1 0%, $gradient2 100%);
+}
+
+.gradient-text {
+  background: linear-gradient(45deg, $gradient1 0%, $gradient2 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.custom-icon:hover {
+  color: $gradient1;
+}
+
+.gradient-text-with-hover {
+  color: $black;
+}
+
+.gradient-text-with-hover:hover {
+  background: linear-gradient(45deg, $gradient1 0%, $gradient2 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.mat-stroked-button {
+  color: $black;
+  height: 36px;
+  text-transform: uppercase;
+}
+
+.disabled-pointer-event {
+  pointer-events: none;
+  filter: grayscale(100%);
+}
+
+.button-custom-on-center {
+  display: flex;
+  justify-content: center;
+  flex-flow: row;
+}
+
+.custom-text:hover {
+  color: $gradient2;
+}
+
+.legal-details-back-button {
+  display: flex;
+  padding-top: 20px;
+  justify-content: flex-end;
+  flex-flow: row;
+}
+
+.mat-chip.mat-standard-chip::after {
+  background: transparent;
+}
+
+.custom-detail-field {
+  padding-bottom: 10px;
+
+  li {
+    list-style-type: none;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  .custom-detail-field-title {
+    font-weight: bold;
+    padding-bottom: 5px;
+  }
+}
+
+.custom-top-right-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.custom-gradient {
+  background-color: $gradient1;
+  background-image: -moz-linear-gradient(45deg, $gradient1 0%, $gradient2 100%);
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    color-stop(0%, $gradient1),
+    color-stop(100%, $gradient2)
+  );
+  background-image: -webkit-linear-gradient(
+    45deg,
+    $gradient1 0%,
+    $gradient2 100%
+  );
+  background-image: -o-linear-gradient(45deg, $gradient1 0%, $gradient2 100%);
+  background: -ms-linear-gradient(45deg, $gradient1 0%, $gradient2 100%);
+  background: -webkit-linear-gradient(45deg, $gradient1 0%, $gradient2 100%);
+  background: -o-linear-gradient(45deg, $gradient1 0%, $gradient2 100%);
+  background: linear-gradient(45deg, $gradient1 0%, $gradient2 100%);
+}

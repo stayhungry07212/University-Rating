@@ -1,0 +1,25 @@
+<div *ngIf="editable">
+    <mat-icon [ngStyle]="{'color': stars > 3 ? 'green' : stars == 3 ? 'orange' : 'red'}" class="cursor-pointer" (click)="setStars(1)">
+        {{ stars >= 1 ? 'star' : 'star_border' }}</mat-icon>
+    <mat-icon [ngStyle]="{'color': stars > 3 ? 'green' : stars == 3 ? 'orange' : 'red'}" class="cursor-pointer" (click)="setStars(2)">
+        {{ stars >= 2 ? 'star' : 'star_border' }}
+    </mat-icon>
+    <mat-icon [ngStyle]="{'color': stars > 3 ? 'green' : stars == 3 ? 'orange' : 'red'}" class="cursor-pointer" (click)="setStars(3)">
+        {{ stars >= 3 ? 'star' : 'star_border' }}
+    </mat-icon>
+    <mat-icon [ngStyle]="{'color': stars > 3 ? 'green' : stars == 3 ? 'orange' : 'red'}" class="cursor-pointer" (click)="setStars(4)">
+        {{ stars >= 4 ? 'star' : 'star_border' }}
+    </mat-icon>
+    <mat-icon [ngStyle]="{'color': stars > 3 ? 'green' : stars == 3 ? 'orange' : 'red'}" class="cursor-pointer" (click)="setStars(5)">
+        {{ stars >= 5 ? 'star' : 'star_border' }}
+    </mat-icon>
+</div>
+<div *ngIf=!editable>
+    <mat-icon *ngFor="let star of (stars | fromNumberToArray)"
+        [ngStyle]="{'color': stars > 3 ? 'green' : stars == 3 ? 'orange' : 'red'}">star</mat-icon>
+    <mat-icon *ngFor="let star of (5 - stars | fromNumberToArray)"
+        [ngStyle]="{'color': stars > 3 ? 'green' : stars == 3 ? 'orange' : 'red'}">star_border</mat-icon>
+       <div *ngIf="showNumberOfRatings" class="grey-text">
+        {{ reviews?.length }} recenzii
+       </div> 
+</div>

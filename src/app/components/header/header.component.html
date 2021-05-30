@@ -1,0 +1,96 @@
+<header
+  class="sticky-header header-area transparent-header"
+  id="navbar"
+  [ngClass]="{ 'is-sticky': isSticky || !firstPage, 'box-shadow-header': isSticky}"
+>
+  <div class="container">
+    <nav
+      class="navbar navbar-expand-md"
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+    >
+      <div
+        class="app-title-cursor"
+        (click)="goToHomepage()"
+        class="custom-title"
+        [ngClass]="{ 'gradient-text': !firstPage }"
+      >
+        UniView
+      </div>
+
+      <div>
+        <button
+          mat-stroked-button
+          [matMenuTriggerFor]="menu"
+          #t="matMenuTrigger"
+          *ngIf="user"
+          class="white-button-without-hover"
+        >
+          <mat-icon
+            *ngIf="t.menuOpen === false && !user"
+            class="custom-icon-login gradient-text-with-hover"
+            >menu</mat-icon
+          >
+          <mat-icon
+            *ngIf="t.menuOpen === false && user"
+            class="custom-icon-login gradient-text-with-hover"
+            >account_circle</mat-icon
+          >
+          <mat-icon
+            *ngIf="t.menuOpen === true"
+            class="custom-icon-login gradient-text-with-hover"
+            >close</mat-icon
+          >
+        </button>
+        <button
+          mat-stroked-button
+          (click)="openLoginDialog()"
+          *ngIf="!user"
+          class="white-text-button-without-hover"
+        >
+          {{ "buttons.login" | translate | uppercase }}
+        </button>
+        <button
+          mat-stroked-button
+          (click)="openSignUpDialog()"
+          *ngIf="!user"
+          class="white-button-without-hover"
+        >
+          {{ "buttons.signup" | translate | uppercase }}
+        </button>
+        <mat-menu #menu="matMenu" xPosition="before">
+          <button
+            mat-menu-item
+            (click)="goToDashboard()"
+            *ngIf="user && user.type === 'admin'"
+          >
+            {{ "buttons.dashboard" | translate | uppercase }}
+          </button>
+          <button
+            mat-menu-item
+            (click)="goToRequests()"
+            *ngIf="user && user.type === 'admin'"
+          >
+            Cereri universitati
+          </button>
+          <button
+            mat-menu-item
+            (click)="goToReviewRequests()"
+            *ngIf="user && user.type === 'admin'"
+          >
+            Cereri recenzii
+          </button>
+          <button mat-menu-item (click)="goToUserDetails()" *ngIf="user">
+            Detalii cont
+          </button>
+          <button mat-menu-item (click)="goToFavourites()" *ngIf="user">
+            Favorite
+          </button>
+          <button mat-menu-item (click)="logOutUser()" *ngIf="user">
+            {{ "buttons.logout" | translate | uppercase }}
+          </button>
+        </mat-menu>
+      </div>
+    </nav>
+  </div>
+</header>

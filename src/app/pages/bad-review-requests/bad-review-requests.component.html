@@ -1,0 +1,177 @@
+<mat-tab-group mat-align-tabs="center">
+  <!-- approved -->
+  <mat-tab label="Approved">
+    <div *ngFor="let item of getData('approved')">
+      <mat-card fxLayout="column" *ngIf="item.reviewId">
+        <mat-card-content>
+          <div class="custom-detail-field" *ngIf="item.status">
+            <div class="custom-detail-field-title">
+              Status
+            </div>
+            {{ item.status }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.userId">
+            <div class="custom-detail-field-title">
+              Id utilizator
+            </div>
+            {{ item.userId }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.comment">
+            <div class="custom-detail-field-title">
+              Comentariu
+            </div>
+            {{ item.comment }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.stars">
+            <div class="custom-detail-field-title">
+              Stele
+            </div>
+            {{ item.stars }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.universityId">
+            <div class="custom-detail-field-title">
+              ID Universitate
+            </div>
+            {{ item.universityId }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.facultyId">
+            <div class="custom-detail-field-title">
+              ID Facultate
+            </div>
+            {{ item.facultyId }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.reviewId">
+            <div class="custom-detail-field-title">
+              ID Review
+            </div>
+            {{ item.reviewId }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.date">
+            <div class="custom-detail-field-title">
+              Data
+            </div>
+            {{ item.date }}
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </mat-tab>
+  <!-- pending -->
+  <mat-tab label="Pending">
+    <div *ngFor="let item of getData('pending')">
+      <mat-card fxLayout="column" *ngIf="item.reviewId">
+        <mat-card-content>
+          <div class="custom-detail-field" *ngIf="item.status">
+            <div class="custom-detail-field-title">
+              Status
+            </div>
+            {{ item.status }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.userId">
+            <div class="custom-detail-field-title">
+              Id utilizator
+            </div>
+            {{ item.userId }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.comment">
+            <div class="custom-detail-field-title">
+              Comentariu
+            </div>
+            {{ item.comment }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.stars">
+            <div class="custom-detail-field-title">
+              Stele
+            </div>
+            {{ item.stars }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.universityId">
+            <div class="custom-detail-field-title">
+              ID Universitate
+            </div>
+            {{ item.universityId }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.facultyId">
+            <div class="custom-detail-field-title">
+              ID Facultate
+            </div>
+            {{ item.facultyId }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.reviewId">
+            <div class="custom-detail-field-title">
+              ID Review
+            </div>
+            {{ item.reviewId }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.date">
+            <div class="custom-detail-field-title">
+              Data
+            </div>
+            {{ item.date }}
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-stroked-button (click)="approve(item)">Aproba</button>
+          <button mat-stroked-button (click)="decline(item)">Respinge</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </mat-tab>
+  <!-- declined -->
+  <mat-tab label="Declined">
+    <div *ngFor="let item of getData('declined')">
+      <mat-card fxLayout="column" *ngIf="item.reviewId">
+        <mat-card-content>
+          <div class="custom-detail-field" *ngIf="item.status">
+            <div class="custom-detail-field-title">
+              Status
+            </div>
+            {{ item.status }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.userId">
+            <div class="custom-detail-field-title">
+              Id utilizator
+            </div>
+            {{ item.userId }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.comment">
+            <div class="custom-detail-field-title">
+              Comentariu
+            </div>
+            {{ item.comment }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.stars">
+            <div class="custom-detail-field-title">
+              Stele
+            </div>
+            {{ item.stars }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.universityId">
+            <div class="custom-detail-field-title">
+              ID Universitate
+            </div>
+            {{ item.universityId }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.facultyId">
+            <div class="custom-detail-field-title">
+              ID Facultate
+            </div>
+            {{ item.facultyId }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.reviewId">
+            <div class="custom-detail-field-title">
+              ID Review
+            </div>
+            {{ item.reviewId }}
+          </div>
+          <div class="custom-detail-field" *ngIf="item.date">
+            <div class="custom-detail-field-title">
+              Data
+            </div>
+            {{ item.date }}
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </mat-tab>
+</mat-tab-group>

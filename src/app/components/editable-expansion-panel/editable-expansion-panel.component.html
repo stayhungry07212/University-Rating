@@ -1,0 +1,62 @@
+<form fxLayout="column" [formGroup]="form">
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{ data?.name }}
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="actions">
+            <button mat-stroked-button *ngIf="editable && !userChooseToEdit" (click)="editProgram()">Editeaza</button>
+            <button mat-stroked-button *ngIf="userChooseToEdit" (click)="removeProgram()">Sterge</button>
+            <button mat-stroked-button *ngIf="userChooseToEdit" (click)="saveProgram()">Salveaza</button>
+        </div>
+        <div *ngIf="userChooseToEdit" class="custom-detail-field">
+            <mat-form-field>
+                <input matInput required placeholder="name" formControlName="name" type="text">
+            </mat-form-field>
+        </div>
+        <div class="custom-detail-field" *ngIf="data?.years && !userChooseToEdit">
+            <div class="custom-detail-field-title">
+                {{ 'faculty_page.bachelors.years' | translate }}
+            </div>
+            {{ data?.years }}
+        </div>
+        <div *ngIf="userChooseToEdit" class="custom-detail-field">
+            <mat-form-field>
+                <input matInput required placeholder="years" formControlName="years" type="number">
+            </mat-form-field>
+        </div>
+        <div class="custom-detail-field" *ngIf="data?.semesters && !userChooseToEdit">
+            <div class="custom-detail-field-title">
+                {{ 'faculty_page.bachelors.semesters' | translate }}
+            </div>
+            {{ data?.semesters }}
+        </div>
+        <div *ngIf="userChooseToEdit" class="custom-detail-field">
+            <mat-form-field>
+                <input matInput required placeholder="semesters" formControlName="semesters" type="number">
+            </mat-form-field>
+        </div>
+        <div class="custom-detail-field" *ngIf="data.generalSkills">
+            <div class="custom-detail-field-title" *ngIf="data.generalSkills.length > 0 || userChooseToEdit">
+                {{ 'faculty_page.bachelors.general_skills' | translate }}
+            </div>
+            <app-editable-list [editable]="userChooseToEdit" [list]="data.generalSkills"
+                (listEdited)="modifyValuesFromList($event, 'generalSkills')"></app-editable-list>
+        </div>
+        <div class="custom-detail-field" *ngIf="data.professionalPerspectives">
+            <div class="custom-detail-field-title" *ngIf="data.professionalPerspectives.length > 0 || userChooseToEdit">
+                {{ 'faculty_page.bachelors.professional_perspectives' | translate }}
+            </div>
+            <app-editable-list [editable]="userChooseToEdit" [list]="data.professionalPerspectives"
+                (listEdited)="modifyValuesFromList($event, 'professionalPerspectives')"></app-editable-list>
+        </div>
+        <div class="custom-detail-field" *ngIf="getCoursesForSpecialisation(data.id).length > 0 || userChooseToEdit">
+            <div class="custom-detail-field-title">
+                {{ 'faculty_page.details.courses' | translate }}
+            </div>
+            <app-editable-chips-list [courses]="getCoursesForSpecialisation(data.id)" [editable]="userChooseToEdit"
+                [specialisationId]="data.id" [specialisationType]="type"></app-editable-chips-list>
+        </div>
+    </mat-expansion-panel>
+</form>

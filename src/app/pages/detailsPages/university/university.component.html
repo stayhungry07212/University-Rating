@@ -1,0 +1,347 @@
+<form fxLayout="column" [formGroup]="form">
+  <div class="header">
+    <img
+      mat-card-image
+      class="header-background-image"
+      src="{{
+        universityDetails.logoUniversity
+          ? universityDetails.logoUniversity
+          : 'assets/university.png'
+      }}"
+    />
+    <div class="edit-button">
+      <app-wave-button
+        text="Editeaza universitate"
+        (click)="editDetails()"
+        *ngIf="userCanEdit && !editEnabled"
+      ></app-wave-button>
+      <app-wave-button
+        text="Salveaza"
+        (click)="saveDetails()"
+        *ngIf="userCanEdit && editEnabled"
+      ></app-wave-button>
+    </div>
+    <div class="header-content">
+      <div class="logo" *ngIf="!editEnabled">
+        <img
+          mat-card-image
+          src="{{
+            universityDetails.logoUniversity
+              ? universityDetails.logoUniversity
+              : 'assets/university.png'
+          }}"
+        />
+      </div>
+      <div class="logo" *ngIf="editEnabled">
+        <app-file-uploader
+          type="logoUniversity"
+          [id]="universityDetails.universityId"
+        ></app-file-uploader>
+      </div>
+      <div class="main-informations">
+        <div class="type" *ngIf="!editEnabled">
+          {{ universityDetails.typeUniversity }}
+        </div>
+        <div *ngIf="editEnabled">
+          <mat-form-field>
+            <mat-label>Institution type</mat-label>
+            <mat-select formControlName="typeUniversity">
+              <mat-option value="privat">
+                Privat
+              </mat-option>
+              <mat-option value="stat">
+                Stat
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="name" *ngIf="!editEnabled">
+          {{ universityDetails.nameUniversity | uppercase }}
+        </div>
+        <div *ngIf="editEnabled">
+          <mat-form-field>
+            <input
+              matInput
+              required
+              placeholder="name"
+              formControlName="nameUniversity"
+              type="text"
+            />
+          </mat-form-field>
+        </div>
+        <app-editable-star-rating
+          *ngIf="reviewsData"
+          [reviews]="reviewsData"
+          [editable]="false"
+          type="university"
+          showNumberOfRatings="true"
+        ></app-editable-star-rating>
+      </div>
+    </div>
+    <div class="visit-website-button">
+      <button
+        mat-stroked-button
+        (click)="goToWebsite(universityDetails.websiteUniversity)"
+        *ngIf="!editEnabled"
+      >
+        Viziteaza website
+      </button>
+      <div *ngIf="editEnabled">
+        <mat-form-field>
+          <input
+            matInput
+            required
+            placeholder="websiteUniversity"
+            formControlName="websiteUniversity"
+            type="text"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div class="description">
+    <div *ngIf="!editEnabled">
+      {{ universityDetails.descriptionUniversity | limitCharactersInDiv: 650 }}
+    </div>
+    <div *ngIf="editEnabled">
+      <mat-form-field>
+        <input
+          matInput
+          required
+          placeholder="description"
+          formControlName="descriptionUniversity"
+          type="text"
+        />
+      </mat-form-field>
+    </div>
+    <!-- TODO: add read more button -->
+  </div>
+  <div class="faculties" *ngIf="facultiesData.length > 0 && !editEnabled">
+    <div *ngFor="let result of facultiesData">
+      <app-presentation-card [data]="result" type="Faculty"></app-presentation-card>
+    </div>
+  </div>
+  <div class="faculties-table" *ngIf="editEnabled">
+    <button
+      mat-stroked-button
+      (click)="addFacultyDialog()"
+    >
+      Adauga facultate
+    </button>
+    <table
+      mat-table
+      [dataSource]="facultiesData"
+      *ngIf="facultiesData.length > 0"
+    >
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "university_page.faculties.name" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.nameFaculty }}</td>
+      </ng-container>
+      <ng-container matColumnDef="bachelors">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "university_page.faculties.bachelors" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.bachelors?.length }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="masters">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "university_page.faculties.masters" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.masters?.length }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="doctorals">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "university_page.faculties.doctorals" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.doctorals ? element.doctorals?.length : 0 }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="button">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-stroked-button (click)="onNavigate(element.facultyId)">
+            {{ "university_page.faculties.details" | translate }}
+          </button>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="remove">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-stroked-button (click)="removeFaculty(element)">
+            Sterge
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+  <div class="vision" *ngIf="universityDetails.vision && !editEnabled">
+    <div class="title">
+      Viziune
+    </div>
+    <div class="content">
+      {{ universityDetails.vision }}
+    </div>
+  </div>
+  <div class="vision" *ngIf="editEnabled">
+    <div class="title">
+      Viziune
+    </div>
+    <div class="content">
+      <mat-form-field>
+        <input
+          matInput
+          required
+          placeholder="vision"
+          formControlName="vision"
+          type="text"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+  <div
+    class="values"
+    *ngIf="universityDetails.values.length > 0 && !editEnabled"
+  >
+    <div class="title">
+      Valori
+    </div>
+    <ul>
+      <li *ngFor="let program of universityDetails.values">
+        {{ program }}
+      </li>
+    </ul>
+  </div>
+  <div class="values" *ngIf="editEnabled">
+    <div class="title">
+      Valori
+    </div>
+    <app-editable-list
+      [editable]="editEnabled"
+      [list]="universityDetails.values"
+      (listEdited)="modifyValuesFromList($event, 'values')"
+    ></app-editable-list>
+  </div>
+  <!-- TODO photos -->
+  <div
+    class="strategicPrograms"
+    *ngIf="universityDetails.strategicProgram.length > 0 && !editEnabled"
+  >
+    <div class="title">
+      Programe strategice
+    </div>
+    <ul>
+      <li *ngFor="let program of universityDetails.strategicProgram">
+        {{ program }}
+      </li>
+    </ul>
+  </div>
+  <div class="strategicPrograms" *ngIf="editEnabled">
+    <div class="title">
+      Programe strategice
+    </div>
+    <app-editable-list
+      [editable]="editEnabled"
+      [list]="universityDetails.strategicProgram"
+      (listEdited)="modifyValuesFromList($event, 'strategicPrograms')"
+    ></app-editable-list>
+  </div>
+  <div class="facilities" *ngIf="editEnabled || ( universityDetails.facilitiesUniversity && universityDetails.facilitiesUniversity.length > 0 )">
+    <div class="title">
+      Facilitati
+    </div>
+    <app-editable-facilities
+      [facilitiesList]="facilitiesList"
+      [selectedFacilities]="universityDetails.facilitiesUniversity"
+      [editEnabled]="editEnabled"
+      (listEdited)="facilitiesListEdited($event)"
+    >
+    </app-editable-facilities>
+  </div>
+  <div class="contact" *ngIf="!editEnabled">
+    <div class="title">
+      Contact
+    </div>
+    <div class="content">
+      <agm-map
+        appDirectionsMap
+        [showDirection]="displayDirections"
+        [origin]="origin"
+        [destination]="destination"
+        [zoom]="zoom"
+        [disableDefaultUI]="false"
+        [zoomControl]="false"
+        *ngIf="destination && displayDirections"
+      >
+        <agm-marker
+          [latitude]="destination?.lat"
+          [longitude]="destination?.lng"
+        >
+        </agm-marker>
+      </agm-map>
+      <div class="contact-informations">
+        <div *ngIf="universityDetails.phone">
+          Telefon: {{ universityDetails.phone }}
+        </div>
+        <div *ngIf="universityDetails.address">
+          Adresa: {{ universityDetails.address }}
+        </div>
+        <div *ngIf="universityDetails.fax">
+          Fax: {{ universityDetails.fax }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="contact" *ngIf="editEnabled">
+    <div class="title">
+      Contact
+    </div>
+    <div class="content">
+      <div class="contact-informations">
+        <mat-form-field>
+          <input
+            matInput
+            required
+            placeholder="Phone"
+            formControlName="phone"
+            type="text"
+          />
+        </mat-form-field>
+        <AutocompleteAddressComponent
+          (setAddress)="getAddress($event)"
+          adressType="geocode"
+        >
+        </AutocompleteAddressComponent>
+        <mat-form-field>
+          <input
+            matInput
+            required
+            placeholder="fax"
+            formControlName="fax"
+            type="text"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div class="reviews" *ngIf="!editEnabled && reviewsData && reviewsData.length > 0">
+    <div class="title">
+      Recenzii 
+    </div>
+    <div *ngIf="reviewsData.length > 0">
+      <app-editable-comments
+      *ngFor="let review of reviewsData"
+      [review]="review"
+      [editable]="user.id === review.userId && !review.comment"
+    ></app-editable-comments>
+    </div>
+  </div>
+</form>

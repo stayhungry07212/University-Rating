@@ -1,0 +1,30 @@
+@import '../../../app/variables.scss';
+
+app-footer {
+  .custom-footer {
+    display: flex;
+    padding: 0px 60px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    background-color: $gradient1;
+    background-image: -moz-linear-gradient(45deg, $gradient1 0%, $gradient2 100%);
+    background-image: -webkit-gradient(
+      linear,
+      left top,
+      right top,
+      color-stop(0%, $gradient1),
+      color-stop(100%, $gradient2)
+    );
+    background-image: -webkit-linear-gradient(45deg, $gradient1 0%, $gradient2 100%);
+    background-image: -o-linear-gradient(45deg, $gradient1 0%, $gradient2 100%);
+    background: -ms-linear-gradient(45deg, $gradient1 0%, $gradient2 100%);
+    background: -webkit-linear-gradient(45deg, $gradient1 0%, $gradient2 100%);
+    background: -o-linear-gradient(45deg, $gradient1 0%, $gradient2 100%);
+    background: linear-gradient(45deg, $gradient1 0%, $gradient2 100%);
+    color: $white;
+
+    .mat-button {
+      margin: 5px 10px;
+    }
+  }
+}

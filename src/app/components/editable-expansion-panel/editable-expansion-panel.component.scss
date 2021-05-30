@@ -1,0 +1,10 @@
+app-editable-expansion-panel {
+    .actions {
+        display: flex;
+
+        .mat-stroked-button {
+            margin-right: 10px;
+            margin-bottom: 15px;
+        }
+    }
+}

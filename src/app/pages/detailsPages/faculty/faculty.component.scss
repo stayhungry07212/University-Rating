@@ -1,0 +1,186 @@
+@import "../../../variables.scss";
+
+app-faculty {
+  .mat-card-image {
+    margin: unset;
+  }
+
+  .university-header {
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    position: relative;
+    text-align: center;
+
+    .visit-university-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: white;
+    }
+
+    .header-background-image {
+      opacity: 0.1;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .header-content {
+      display: flex;
+      flex-flow: column;
+      position: absolute;
+      top: 65%;
+      width: 100%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      .type {
+        text-transform: uppercase;
+        color: #2b1c74;
+        font-weight: 500;
+      }
+
+      .name {
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+    }
+
+    .visit-website-button {
+      position: absolute;
+      bottom: 20px;
+      background-color: white;
+      right: 20px;
+
+      .mat-form-field-wrapper {
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  .header {
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    position: relative;
+    text-align: center;
+
+    .edit-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .header-content {
+      display: flex;
+      flex-flow: row;
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      .logo {
+        width: 40%;
+        height: 200px;
+        display: flex;
+        flex-flow: row;
+        justify-content: flex-end;
+
+        .mat-card-image:first-child {
+          margin-top: unset;
+        }
+
+        .mat-card-image {
+          width: auto;
+          height: 100%;
+          margin-right: 20px;
+        }
+      }
+
+      .main-informations {
+        display: flex;
+        justify-content: flex-start;
+        text-align: left;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        flex-flow: column;
+        width: 40%;
+        justify-content: center;
+        align-items: flex-start;
+
+        .location {
+          text-transform: uppercase;
+          color: #2b1c74;
+          font-weight: 500;
+        }
+
+        .name {
+          font-weight: bold;
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    .visit-website-button {
+      position: absolute;
+      bottom: 20px;
+      background-color: white;
+      right: 20px;
+
+      .mat-form-field-wrapper {
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  .description {
+    padding: 20px 60px;
+    text-align: center;
+  }
+
+  .title {
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    text-align: center;
+  }
+
+  .reviews {
+    margin: 0px 60px;
+    margin-bottom: 20px;
+  }
+
+  .tabs {
+    margin: 0px 60px 20px;
+
+    .mat-tab-labels {
+      display: flex;
+      justify-content: center;
+    }
+
+    .add-button {
+      margin: 20px 0px;
+    }
+
+    .mat-expansion-panel-header-title {
+      font-weight: bold;
+      color: black;
+    }
+
+    .mat-expansion-panel {
+      border-radius: unset;
+      background-color: rgba(0, 0, 0, 0.03);
+    }
+
+    .mat-expansion-panel:not([class*="mat-elevation-z"]) {
+      box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.11),
+        0 2px 2px 0 rgba(0, 0, 0, 0), 0 1px 5px 0 rgba(0, 0, 0, 0);
+    }
+  }
+}

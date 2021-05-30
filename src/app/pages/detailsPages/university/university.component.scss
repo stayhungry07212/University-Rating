@@ -1,0 +1,301 @@
+@import "../../../variables.scss";
+
+app-university {
+  .mat-card-image {
+    margin: unset;
+  }
+
+  .faculties-table {
+    display:flex;
+    flex-flow: column;
+    margin: 10px 60px;
+  }
+
+  .header {
+    height: 300px;
+    // background-color: aqua;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    position: relative;
+    text-align: center;
+
+    .edit-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .header-background-image {
+      opacity: 0.1  ;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .header-content {
+      display: flex;
+      flex-flow: row;
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      .logo {
+        width: 40%;
+        height: 200px;
+        display: flex;
+        flex-flow: row;
+        justify-content: flex-end;
+
+        .mat-card-image:first-child {
+          margin-top: unset;
+        }
+
+        .mat-card-image {
+          width: auto;
+          height: 100%;
+          margin-right: 20px;
+        }
+      }
+
+      .main-informations {
+        display: flex;
+        justify-content: flex-start;
+        text-align: left;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        flex-flow: column;
+        width: 40%;
+        justify-content: center;
+        align-items: flex-start;
+
+        .type {
+          text-transform: uppercase;
+          color: #2b1c74;
+          font-weight: 500;
+        }
+
+        .name {
+          font-weight: bold;
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    .visit-website-button {
+      position: absolute;
+      bottom: 20px;
+      background-color: white;
+      right: 20px;
+
+      .mat-form-field-wrapper {
+        padding-bottom: 0;
+    }
+    }
+  }
+
+  .description {
+    padding: 20px 60px;
+    text-align: center;
+  }
+
+  .strategicPrograms {
+    padding: 20px 60px;
+    text-align: center;
+
+    ul {
+      column-count: 2;
+      list-style-type: none;
+      text-align: start;
+      margin-block-start: unset;
+      margin-block-end: unset;
+      padding-inline-start: unset;
+
+      li {
+        color: #3d639f;
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  .vision {
+    padding: 20px 60px;
+    text-align: center;
+
+    .content {
+      color: #3d639f;
+    }
+  }
+
+  .values {
+    padding: 20px 60px;
+    text-align: center;
+
+    ul {
+      column-count: 2;
+      list-style-type: none;
+      text-align: center;
+      margin-block-start: unset;
+      margin-block-end: unset;
+      padding-inline-start: unset;
+
+      li {
+        color: #3d639f;
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  .faculties {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    margin: 0px 60px;
+
+    .mat-card:hover {
+      .mat-card-content {
+        .logo-image {
+          img {
+            filter: none;
+          }
+        }
+      }
+    }
+
+    .mat-card {
+      width: 209px;
+      display: flex;
+      margin: 10px;
+      flex-flow: column;
+      align-items: center;
+
+      .mat-card-content {
+        display: flex;
+        flex-flow: column;
+        height: 100%;
+        text-align: -webkit-center;
+        align-content: center;
+
+        .logo-image {
+          height: 160px;
+          min-height: 160px;
+
+          img {
+            max-width: 70%;
+            max-height: 100%;
+            filter: grayscale(100%);
+          }
+
+          img:first-child {
+            margin-top: unset;
+          }
+        }
+
+        .bottom-items {
+          display: flex;
+          flex-flow: column;
+          align-self: center;
+          height: 100%;
+          justify-content: flex-end;
+
+          app-editable-star-rating {
+            align-self: center;
+            margin-bottom: 15px;
+          }
+        }
+      }
+    }
+  }
+
+  .facilities {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    margin: 0px 60px;
+  }
+
+  .title {
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    text-align: center;
+  }
+
+  .contact {
+    margin: 0px 60px;
+
+    .content {
+      display: flex;
+      flex-flow: row;
+      margin-bottom: 20px;
+
+      agm-map {
+        width: 100%;
+        height: 300px;
+      }
+
+      .contact-informations {
+        display: flex;
+        justify-content: center;
+        margin-left: 20px;
+        flex-flow: column;
+      }
+    }
+  }
+
+  .reviews {
+    margin: 0px 60px;
+    margin-bottom: 20px;
+  }
+}
+
+// app-university {
+
+//   agm-map {
+//     width: 100%;
+//     height: 500px;
+//   }
+
+//   .custom-university-header {
+//     padding-top: 30px;
+
+//     .mat-card-image {
+//       width: 200px;
+//     }
+
+//     .name-and-logo {
+//       text-align: center;
+//       display: flex;
+//       flex-flow: column;
+//     }
+//   }
+
+//   .mat-tab-body {
+//     margin: 20px;
+//   }
+
+//   table {
+//     width: 100%;
+
+//     th.mat-header-cell {
+//       padding: 10px;
+//     }
+
+//     td.mat-cell {
+//       text-align: center;
+//     }
+
+//     td.mat-cell:first-of-type {
+//       text-align: left;
+//     }
+//   }
+
+//   #map {
+//     height: 100vh !important;
+//   }
+
+// }
